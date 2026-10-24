@@ -4,9 +4,7 @@ Extensão para personalizar e melhorar as aulas e partidas de xadrez do Duolingo
 
 Criada por **[lucrazy-fn](https://github.com/lucrazy-fn)**.
 
-🌐 **Site:** [checklingo.shrewdhen19.chatgpt.site](https://checklingo.shrewdhen19.chatgpt.site)
-
-🌐 **GitHub Pages:** [lucrazy-fn.github.io/checklingo](https://lucrazy-fn.github.io/checklingo/)
+🌐 **Site:** [lucrazy-fn.github.io/checklingo](https://lucrazy-fn.github.io/checklingo/)
 
 ## Recursos
 
