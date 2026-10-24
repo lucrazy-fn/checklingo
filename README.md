@@ -4,6 +4,8 @@ Extensão para personalizar e melhorar as aulas e partidas de xadrez do Duolingo
 
 Criada por **[lucrazy-fn](https://github.com/lucrazy-fn)**.
 
+🌐 **Site:** [checklingo.shrewdhen19.chatgpt.site](https://checklingo.shrewdhen19.chatgpt.site)
+
 ## Recursos
 
 - Substituição personalizada de palavras nos textos das lições.
@@ -47,3 +49,4 @@ O CheckLingo funciona localmente no navegador. As preferências são armazenadas
 Distribuído sob a [licença MIT](LICENSE).
 
 CheckLingo é um projeto independente e não possui vínculo oficial com o Duolingo.
+
