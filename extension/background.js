@@ -13,3 +13,4 @@ browser.commands.onCommand.addListener(async (command, tab) => {
     console.debug("CheckLingo: atalho indisponível nesta aba", error);
   }
 });
+

@@ -6,6 +6,8 @@ Criada por **[lucrazy-fn](https://github.com/lucrazy-fn)**.
 
 🌐 **Site:** [checklingo.shrewdhen19.chatgpt.site](https://checklingo.shrewdhen19.chatgpt.site)
 
+🌐 **GitHub Pages:** [lucrazy-fn.github.io/checklingo](https://lucrazy-fn.github.io/checklingo/)
+
 ## Recursos
 
 - Substituição personalizada de palavras nos textos das lições.
@@ -14,7 +16,10 @@ Criada por **[lucrazy-fn](https://github.com/lucrazy-fn)**.
 - Coordenadas nas bordas do tabuleiro.
 - Setas para visualizar jogadas.
 - Histórico da partida com ícones das peças e casas de origem e destino.
+- Peças do histórico em símbolos ou letras, com marcação de xeque (`+`) e xeque-mate (`#`) quando o resultado é confirmado pela página.
+- Tema claro, escuro ou automático na extensão; tema claro e escuro no site.
 - Interface em português, inglês e espanhol.
+- Site em português, inglês e espanhol.
 - Compatibilidade com Firefox e navegadores Chromium, como Chrome, Brave, Edge, Opera e Vivaldi.
 
 ## Instalação

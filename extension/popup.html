@@ -17,6 +17,13 @@
         <option value="es">Español</option>
       </select>
     </label>
+    <label class="orientation-option"><span data-i18n="appearance">Aparência</span>
+      <select id="theme">
+        <option value="system" data-i18n="themeSystem">Sistema</option>
+        <option value="light" data-i18n="themeLight">Claro</option>
+        <option value="dark" data-i18n="themeDark">Escuro</option>
+      </select>
+    </label>
     <label class="option">
       <span><strong data-i18n="replaceWord">Trocar palavra</strong><small data-i18n="replaceWordHelp">Nos textos de lições e partidas. A fala não muda.</small></span>
       <input id="replaceEnabled" type="checkbox">
@@ -66,6 +73,12 @@
       <span><strong data-i18n="moveHistory">Histórico das jogadas</strong><small data-i18n="moveHistoryHelp">Mostrar lances confirmados ao lado do tabuleiro, com a peça e as posições.</small></span>
       <input id="historyEnabled" type="checkbox">
     </label>
+    <label class="orientation-option"><span data-i18n="pieceNotation">Peças no histórico</span>
+      <select id="pieceNotation">
+        <option value="symbol" data-i18n="pieceSymbols">Símbolos (♞)</option>
+        <option value="letter" data-i18n="pieceLetters">Letras (C)</option>
+      </select>
+    </label>
     <label class="option">
       <span><strong data-i18n="lockBoard">Fixar o tabuleiro</strong><small data-i18n="lockBoardHelp">Evitar o arrasto nativo do canvas e da imagem de fundo.</small></span>
       <input id="preventBoardDrag" type="checkbox">
@@ -77,3 +90,4 @@
   <script src="popup.js"></script>
 </body>
 </html>
+

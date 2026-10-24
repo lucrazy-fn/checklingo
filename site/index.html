@@ -17,30 +17,34 @@
       <span>CheckLingo</span>
     </a>
     <nav aria-label="Navegação principal">
-      <a href="#recursos">Recursos</a>
-      <a href="#instalar">Instalação</a>
-      <a href="#privacidade">Privacidade</a>
+      <a href="#recursos" data-i18n="navFeatures">Recursos</a>
+      <a href="#instalar" data-i18n="navInstall">Instalação</a>
+      <a href="#privacidade" data-i18n="navPrivacy">Privacidade</a>
     </nav>
-    <a class="header-cta" href="#baixar">Baixar</a>
+    <div class="header-actions">
+      <select id="languageSelect" aria-label="Idioma"><option value="pt">PT</option><option value="en">EN</option><option value="es">ES</option></select>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Alternar tema" title="Alternar tema"><span aria-hidden="true">◐</span></button>
+      <a class="header-cta" href="#baixar" data-i18n="download">Baixar</a>
+    </div>
   </header>
 
   <main id="top">
     <section class="hero section-shell">
       <div class="hero-copy reveal">
-        <span class="eyebrow"><span class="status-dot"></span> Extensão independente e gratuita</span>
-        <h1>Seu xadrez.<br><span>Do seu jeito.</span></h1>
-        <p>Mais clareza nas lições e partidas do Duolingo: destaque de jogadas, coordenadas, setas, histórico e palavras personalizadas.</p>
+        <span class="eyebrow"><span class="status-dot"></span><span data-i18n="heroEyebrow">Extensão independente e gratuita</span></span>
+        <h1 data-i18n-html="heroTitle">Seu xadrez.<br><span>Do seu jeito.</span></h1>
+        <p data-i18n="heroText">Mais clareza nas lições e partidas do Duolingo: destaque de jogadas, coordenadas, setas, histórico e palavras personalizadas.</p>
         <div class="hero-actions" id="baixar">
           <a class="button primary" href="downloads/checklingo-firefox.zip" download>
             <span class="browser-mark">◉</span>
-            Firefox
+            <span data-i18n="firefox">Firefox</span>
           </a>
           <a class="button secondary" href="downloads/checklingo-chromium.zip" download>
             <span class="browser-mark">◎</span>
-            Chrome e Chromium
+            <span data-i18n="chromium">Chrome e Chromium</span>
           </a>
         </div>
-        <p class="microcopy">Manifest V3 · versão 1.0.0 · português, inglês e espanhol</p>
+        <p class="microcopy" data-i18n="microcopy">Manifest V3 · versão 1.0.0 · português, inglês e espanhol</p>
       </div>
 
       <div class="hero-visual reveal" aria-label="Demonstração animada do destaque de uma jogada">
@@ -64,17 +68,17 @@
 
     <section class="features section-shell" id="recursos">
       <div class="section-heading reveal">
-        <span class="eyebrow">Um tabuleiro mais legível</span>
-        <h2>Pequenos ajustes.<br>Uma partida bem melhor.</h2>
-        <p>O CheckLingo fica quieto quando você não precisa e aparece exatamente onde ajuda.</p>
+        <span class="eyebrow" data-i18n="featuresEyebrow">Um tabuleiro mais legível</span>
+        <h2 data-i18n-html="featuresTitle">Pequenos ajustes.<br>Uma partida bem melhor.</h2>
+        <p data-i18n="featuresText">O CheckLingo fica quieto quando você não precisa e aparece exatamente onde ajuda.</p>
       </div>
 
       <div class="bento-grid">
         <article class="feature-card feature-wide reveal">
           <div>
             <span class="feature-number">01</span>
-            <h3>Última jogada em evidência</h3>
-            <p>Origem e destino recebem cores diferentes para você e para o adversário. Sem confundir uma animação com uma jogada concluída.</p>
+            <h3 data-i18n="f1Title">Última jogada em evidência</h3>
+            <p data-i18n="f1Text">Origem e destino recebem cores diferentes para você e para o adversário. Sem confundir uma animação com uma jogada concluída.</p>
           </div>
           <div class="mini-board" aria-hidden="true">
             <span></span><span class="hot"></span><span></span><span></span>
@@ -87,68 +91,68 @@
         <article class="feature-card reveal">
           <span class="feature-number">02</span>
           <div class="arrow-demo" aria-hidden="true"><span>♟</span><svg viewBox="0 0 180 82"><path d="M18 66 C65 68 98 22 151 20"></path><path d="m138 10 18 9-13 15"></path></svg></div>
-          <h3>Setas de planejamento</h3>
-          <p>Arraste com o botão direito e marque a ideia antes de mover.</p>
+          <h3 data-i18n="f2Title">Setas de planejamento</h3>
+          <p data-i18n="f2Text">Arraste com o botão direito e marque a ideia antes de mover.</p>
         </article>
 
         <article class="feature-card reveal">
           <span class="feature-number">03</span>
           <div class="coordinates-demo" aria-hidden="true"><span>a</span><span>b</span><span>c</span><span>d</span><b>8</b><b>7</b><b>6</b></div>
-          <h3>Coordenadas nas bordas</h3>
-          <p>Letras e números alinhados ao tabuleiro, com orientação clara ou escura.</p>
+          <h3 data-i18n="f3Title">Coordenadas nas bordas</h3>
+          <p data-i18n="f3Text">Letras e números alinhados ao tabuleiro, com orientação clara ou escura.</p>
         </article>
 
         <article class="feature-card history-card reveal">
           <span class="feature-number">04</span>
-          <h3>Histórico da partida</h3>
+          <h3 data-i18n="f4Title">Histórico da partida</h3>
           <div class="history-list" aria-label="Exemplo de histórico">
-            <div><span class="piece-icon">♟</span><p><small>1. Você</small>e2 → e4</p></div>
-            <div><span class="piece-icon">♞</span><p><small>2. Adversário</small>g8 → f6</p></div>
-            <div><span class="piece-icon">♗</span><p><small>3. Você</small>f1 → c4</p></div>
+            <div><span class="piece-icon">♟</span><p><small data-i18n="you1">1. Você</small>e2 → e4</p></div>
+            <div><span class="piece-icon">♞</span><p><small data-i18n="opponent2">2. Adversário</small>g8 → f6</p></div>
+            <div><span class="piece-icon">♗</span><p><small data-i18n="you3">3. Você</small>f1 → c4+</p></div>
           </div>
         </article>
 
         <article class="feature-card words-card reveal">
           <span class="feature-number">05</span>
-          <h3>As palavras que você prefere</h3>
-          <p>Escolha uma palavra e por qual ela será trocada nos textos de xadrez.</p>
+          <h3 data-i18n="f5Title">As palavras que você prefere</h3>
+          <p data-i18n="f5Text">Escolha uma palavra e por qual ela será trocada nos textos de xadrez.</p>
           <div class="word-swap" aria-label="Exemplo: dama trocada por rainha"><del>dama</del><span>→</span><strong>rainha</strong></div>
         </article>
 
         <article class="feature-card reveal">
           <span class="feature-number">06</span>
           <div class="lock-demo" aria-hidden="true"><span>♜</span><b>✓</b></div>
-          <h3>Tabuleiro no lugar</h3>
-          <p>Bloqueia o arrasto acidental do fundo sem atrapalhar o movimento das peças.</p>
+          <h3 data-i18n="f6Title">Tabuleiro no lugar</h3>
+          <p data-i18n="f6Text">Bloqueia o arrasto acidental do fundo sem atrapalhar o movimento das peças.</p>
         </article>
       </div>
     </section>
 
     <section class="install section-shell" id="instalar">
       <div class="section-heading reveal">
-        <span class="eyebrow">Instalação em menos de um minuto</span>
-        <h2>Baixou, carregou, jogou.</h2>
+        <span class="eyebrow" data-i18n="installEyebrow">Instalação em menos de um minuto</span>
+        <h2 data-i18n="installTitle">Baixou, carregou, jogou.</h2>
       </div>
       <div class="install-grid">
         <article class="install-card reveal">
           <div class="install-title"><span>◉</span><h3>Firefox</h3></div>
           <ol>
-            <li><b>01</b><span>Extraia o arquivo ZIP.</span></li>
-            <li><b>02</b><span>Abra <code>about:debugging</code>.</span></li>
-            <li><b>03</b><span>Carregue o <code>manifest.json</code>.</span></li>
-            <li><b>04</b><span>Recarregue o Duolingo.</span></li>
+            <li><b>01</b><span data-i18n="extractZip">Extraia o arquivo ZIP.</span></li>
+            <li><b>02</b><span data-i18n-html="openFirefox">Abra <code>about:debugging</code>.</span></li>
+            <li><b>03</b><span data-i18n-html="loadManifest">Carregue o <code>manifest.json</code>.</span></li>
+            <li><b>04</b><span data-i18n="reloadDuolingo">Recarregue o Duolingo.</span></li>
           </ol>
-          <a href="downloads/checklingo-firefox.zip" download>Baixar para Firefox <span>↓</span></a>
+          <a href="downloads/checklingo-firefox.zip" download><span data-i18n="downloadFirefox">Baixar para Firefox</span> <span>↓</span></a>
         </article>
         <article class="install-card reveal">
           <div class="install-title"><span>◎</span><h3>Chrome e Chromium</h3></div>
           <ol>
-            <li><b>01</b><span>Extraia o arquivo ZIP.</span></li>
-            <li><b>02</b><span>Abra <code>chrome://extensions</code>.</span></li>
-            <li><b>03</b><span>Ative o modo do desenvolvedor.</span></li>
-            <li><b>04</b><span>Use “Carregar sem compactação”.</span></li>
+            <li><b>01</b><span data-i18n="extractZip">Extraia o arquivo ZIP.</span></li>
+            <li><b>02</b><span data-i18n-html="openChrome">Abra <code>chrome://extensions</code>.</span></li>
+            <li><b>03</b><span data-i18n="enableDev">Ative o modo do desenvolvedor.</span></li>
+            <li><b>04</b><span data-i18n="loadUnpacked">Use “Carregar sem compactação”.</span></li>
           </ol>
-          <a href="downloads/checklingo-chromium.zip" download>Baixar para Chromium <span>↓</span></a>
+          <a href="downloads/checklingo-chromium.zip" download><span data-i18n="downloadChromium">Baixar para Chromium</span> <span>↓</span></a>
         </article>
       </div>
     </section>
@@ -156,33 +160,34 @@
     <section class="privacy section-shell reveal" id="privacidade">
       <div class="privacy-mark" aria-hidden="true">✓</div>
       <div>
-        <span class="eyebrow">Privacidade simples</span>
-        <h2>Seu jogo fica no seu navegador.</h2>
-        <p>O CheckLingo só atua nas páginas do Duolingo e guarda as preferências localmente. Não possui anúncios, conta própria ou coleta de dados.</p>
+        <span class="eyebrow" data-i18n="privacyEyebrow">Privacidade simples</span>
+        <h2 data-i18n="privacyTitle">Seu jogo fica no seu navegador.</h2>
+        <p data-i18n="privacyText">O CheckLingo só atua nas páginas do Duolingo e guarda as preferências localmente. Não possui anúncios, conta própria ou coleta de dados.</p>
       </div>
       <div class="privacy-list">
-        <span>Sem rastreamento</span>
-        <span>Sem anúncios</span>
-        <span>Código aberto</span>
+        <span data-i18n="noTracking">Sem rastreamento</span>
+        <span data-i18n="noAds">Sem anúncios</span>
+        <span data-i18n="openSource">Código aberto</span>
       </div>
     </section>
 
     <section class="final-cta section-shell reveal">
       <img src="assets/checklingo-icon.png" alt="">
       <div>
-        <span class="eyebrow">Pronto para a próxima jogada?</span>
-        <h2>Deixe o tabuleiro trabalhar com você.</h2>
+        <span class="eyebrow" data-i18n="ctaEyebrow">Pronto para a próxima jogada?</span>
+        <h2 data-i18n="ctaTitle">Deixe o tabuleiro trabalhar com você.</h2>
       </div>
-      <a class="button primary" href="#baixar">Escolher navegador</a>
+      <a class="button primary" href="#baixar" data-i18n="chooseBrowser">Escolher navegador</a>
     </section>
   </main>
 
   <footer class="site-footer">
     <a class="brand" href="#top"><img src="assets/checklingo-icon.png" alt=""><span>CheckLingo</span></a>
-    <p>Criado por <strong>lucrazy-fn</strong> · Projeto independente, não afiliado ao Duolingo.</p>
-    <a href="#top">Voltar ao topo ↑</a>
+    <p data-i18n-html="footerText">Criado por <strong>lucrazy-fn</strong> · Projeto independente, não afiliado ao Duolingo.</p>
+    <a href="#top" data-i18n="backTop">Voltar ao topo ↑</a>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+

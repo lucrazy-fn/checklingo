@@ -7,7 +7,7 @@ const browser = globalThis.browser ?? globalThis.chrome;
     globalThis.__duolingoChessHelperRefresh();
     return;
   }
-  const defaults = { language: "auto", replaceEnabled: true, fromWord: "dama", toWord: "rainha", preventBoardDrag: true, highlightLastMove: true, highlightColor: "#ffe36a", opponentHighlightColor: "#ff9b49", coordinatesEnabled: true, coordinateOrientation: "black", arrowsEnabled: true, historyEnabled: true };
+  const defaults = { language: "auto", theme: "system", pieceNotation: "symbol", replaceEnabled: true, fromWord: "dama", toWord: "rainha", preventBoardDrag: true, highlightLastMove: true, highlightColor: "#ffe36a", opponentHighlightColor: "#ff9b49", coordinatesEnabled: true, coordinateOrientation: "black", arrowsEnabled: true, historyEnabled: true };
   const contentMessages = {
     pt_BR: { moveHistory: "Histórico das jogadas", waitingMoves: "Aguardando jogadas…", movedPiece: "Peça movida", you: "Você", opponent: "Adversário" },
     en: { moveHistory: "Move history", waitingMoves: "Waiting for moves…", movedPiece: "Moved piece", you: "You", opponent: "Opponent" },
@@ -53,6 +53,9 @@ const browser = globalThis.browser ?? globalThis.chrome;
   let historyList = null;
   let historyRenderedCount = -1;
   let historyRenderedOrientation = null;
+  let historyRenderedNotation = null;
+  let pieceBoard = null;
+  let pendingOutcome = null;
   const boardMetrics = new WeakMap();
   const boardCaptureSurfaces = new WeakMap();
   const observedRoots = new WeakSet();
@@ -598,23 +601,52 @@ const browser = globalThis.browser ?? globalThis.chrome;
     return null;
   }
 
-  function pieceIcon(image, square) {
-    if (!image) return null;
-    try {
-      const board = measureBoardPixels(image) || { x: image.width * .09, y: image.height * .09, side: image.width * .8 };
-      const cell = board.side / 8;
-      const source = document.createElement("canvas");
-      source.width = image.width;
-      source.height = image.height;
-      source.getContext("2d").putImageData(image, 0, 0);
-      const icon = document.createElement("canvas");
-      icon.width = 36;
-      icon.height = 36;
-      icon.getContext("2d").drawImage(source,
-        board.x + (square.file + .13) * cell, board.y + (square.rank + .13) * cell,
-        cell * .74, cell * .74, 0, 0, 36, 36);
-      return icon.toDataURL("image/png");
-    } catch { return null; }
+  function squareIndex(square) { return square.rank * 8 + square.file; }
+
+  function initializePieceBoard(image) {
+    if (pieceBoard || !image) return;
+    const occupied = Array.from({ length: 64 }, (_, index) => pieceScore(image, { file: index % 8, rank: Math.floor(index / 8) }) > 7);
+    const outerCount = [...occupied.slice(0, 16), ...occupied.slice(48)].filter(Boolean).length;
+    const middleCount = occupied.slice(16, 48).filter(Boolean).length;
+    if (outerCount < 28 || middleCount > 4) return;
+    const blackAtBottom = settings.coordinateOrientation !== "white";
+    const topBack = blackAtBottom
+      ? ["rook", "knight", "bishop", "king", "queen", "bishop", "knight", "rook"]
+      : ["rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"];
+    const bottomBack = [...topBack];
+    pieceBoard = Array(64).fill(null);
+    topBack.forEach((piece, file) => { pieceBoard[file] = piece; pieceBoard[8 + file] = "pawn"; });
+    bottomBack.forEach((piece, file) => { pieceBoard[56 + file] = piece; pieceBoard[48 + file] = "pawn"; });
+  }
+
+  function inferPiece(from, to, before) {
+    initializePieceBoard(before);
+    const known = pieceBoard?.[squareIndex(from)];
+    if (known) return known;
+    const dx = Math.abs(to.file - from.file);
+    const dy = Math.abs(to.rank - from.rank);
+    if ((dx === 1 && dy === 2) || (dx === 2 && dy === 1)) return "knight";
+    if (Math.max(dx, dy) === 1 || (dy === 0 && dx === 2)) return "king";
+    if ((from.rank === 1 || from.rank === 6) && dx <= 1 && dy <= 2) return "pawn";
+    if (dx === dy) return "bishop";
+    if (dx === 0 || dy === 0) return "rook";
+    return "pawn";
+  }
+
+  function updatePieceBoard(piece, from, to) {
+    if (!pieceBoard) return;
+    pieceBoard[squareIndex(to)] = piece;
+    pieceBoard[squareIndex(from)] = null;
+  }
+
+  function pieceMark(piece) {
+    const symbols = { pawn: "♟", knight: "♞", bishop: "♝", rook: "♜", queen: "♛", king: "♚" };
+    const letters = {
+      pt_BR: { pawn: "P", knight: "C", bishop: "B", rook: "T", queen: "D", king: "R" },
+      en: { pawn: "P", knight: "N", bishop: "B", rook: "R", queen: "Q", king: "K" },
+      es: { pawn: "P", knight: "C", bishop: "A", rook: "T", queen: "D", king: "R" }
+    };
+    return settings.pieceNotation === "letter" ? letters[contentLanguage()][piece] : symbols[piece];
   }
 
   function squareName(square) {
@@ -630,6 +662,7 @@ const browser = globalThis.browser ?? globalThis.chrome;
     historyHost = null;
     historyList = null;
     historyRenderedCount = -1;
+    pieceBoard = null;
   }
 
   function ensureHistoryPanel() {
@@ -639,7 +672,8 @@ const browser = globalThis.browser ?? globalThis.chrome;
     historyHost.style.cssText = "position:fixed;z-index:2147483645;pointer-events:auto;width:196px;";
     const shadow = historyHost.attachShadow({ mode: "closed" });
     const style = document.createElement("style");
-    style.textContent = ":host{font:12px system-ui,sans-serif}aside{box-sizing:border-box;max-height:inherit;overflow:auto;border:1px solid #4e6770;border-radius:12px;background:#1b2c34;color:#edf7f8;box-shadow:0 8px 24px #0008}h2{position:sticky;top:0;margin:0;padding:10px 12px;background:#243a43;font-size:13px}ol{margin:0;padding:6px 8px;list-style:none}li{display:flex;align-items:center;gap:7px;padding:5px 3px;border-bottom:1px solid #ffffff1c}li:last-child{border:0}img,.fallback{flex:none;width:30px;height:30px;border-radius:6px;background:#263d46;object-fit:cover}.fallback{display:grid;place-items:center;font-size:22px}span{line-height:1.3}small{display:block;color:#a7c3ca;font-size:10px}.empty{padding:10px;color:#a7c3ca}";
+    const dark = settings.theme === "dark" || (settings.theme === "system" && matchMedia("(prefers-color-scheme:dark)").matches);
+    style.textContent = `:host{font:12px system-ui,sans-serif}aside{box-sizing:border-box;max-height:inherit;overflow:auto;border:1px solid ${dark ? "#4e6770" : "#cfdbdd"};border-radius:12px;background:${dark ? "#1b2c34" : "#f8fbf6"};color:${dark ? "#edf7f8" : "#173039"};box-shadow:0 8px 24px #0004}h2{position:sticky;top:0;margin:0;padding:10px 12px;background:${dark ? "#243a43" : "#e8f1e4"};font-size:13px}ol{margin:0;padding:6px 8px;list-style:none}li{display:flex;align-items:center;gap:7px;padding:5px 3px;border-bottom:1px solid ${dark ? "#ffffff1c" : "#1730391c"}}li:last-child{border:0}.piece{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:8px;background:#10252c;color:#f2f8f5;font-size:21px;font-weight:900}span{line-height:1.3}small{display:block;color:${dark ? "#a7c3ca" : "#617a81"};font-size:10px}.empty{padding:10px;color:${dark ? "#a7c3ca" : "#617a81"}}`;
     const panel = document.createElement("aside");
     const title = document.createElement("h2");
     title.textContent = t("moveHistory");
@@ -678,9 +712,10 @@ const browser = globalThis.browser ?? globalThis.chrome;
     historyHost.style.top = `${(visibleTop + visibleBottom) / 2}px`;
     historyHost.style.transform = "translateY(-50%)";
     historyHost.style.maxHeight = `${Math.min(420, visibleBottom - visibleTop)}px`;
-    if (historyRenderedCount === moveHistory.length && historyRenderedOrientation === settings.coordinateOrientation) return;
+    if (historyRenderedCount === moveHistory.length && historyRenderedOrientation === settings.coordinateOrientation && historyRenderedNotation === settings.pieceNotation) return;
     historyRenderedCount = moveHistory.length;
     historyRenderedOrientation = settings.coordinateOrientation;
+    historyRenderedNotation = settings.pieceNotation;
     historyList.replaceChildren();
     if (!moveHistory.length) {
       const empty = document.createElement("li");
@@ -692,21 +727,15 @@ const browser = globalThis.browser ?? globalThis.chrome;
     for (let index = 0; index < moveHistory.length; index++) {
       const move = moveHistory[index];
       const row = document.createElement("li");
-      if (move.icon) {
-        const icon = document.createElement("img");
-        icon.src = move.icon;
-        icon.alt = t("movedPiece");
-        row.append(icon);
-      } else {
-        const fallback = document.createElement("span");
-        fallback.className = "fallback";
-        fallback.textContent = "♟";
-        row.append(fallback);
-      }
+      const icon = document.createElement("span");
+      icon.className = "piece";
+      icon.textContent = pieceMark(move.piece);
+      icon.setAttribute("aria-label", t("movedPiece"));
+      row.append(icon);
       const text = document.createElement("span");
       const side = document.createElement("small");
       side.textContent = `${index + 1}. ${t(move.side === "player" ? "you" : "opponent")}`;
-      text.append(side, document.createTextNode(`${squareName(move.from)} → ${squareName(move.to)}`));
+      text.append(side, document.createTextNode(`${squareName(move.from)} → ${squareName(move.to)}${move.suffix || ""}`));
       row.append(text);
       historyList.append(row);
     }
@@ -717,10 +746,30 @@ const browser = globalThis.browser ?? globalThis.chrome;
     if (!active || !settings.historyEnabled || !canvas.isConnected) return;
     if (historyCanvas && historyCanvas !== canvas) clearHistory();
     historyCanvas = canvas;
-    moveHistory.push({ side, from, to, icon: pieceIcon(before, from), at });
+    const piece = inferPiece(from, to, before);
+    updatePieceBoard(piece, from, to);
+    const suffix = pendingOutcome && at - pendingOutcome.at < 2500 ? pendingOutcome.suffix : "";
+    pendingOutcome = null;
+    moveHistory.push({ side, from, to, piece, suffix, at });
     moveHistory.sort((a, b) => a.at - b.at);
     if (moveHistory.length > 100) moveHistory.shift();
     renderHistory();
+  }
+
+  function detectOutcomeText(value) {
+    if (!value || value.length > 180 || (!moveHistory.length && !lastPlayerMove)) return;
+    const normalized = value.toLocaleLowerCase().replace(/\s+/g, " ");
+    const suffix = /xeque[ -]?mate|checkmate|jaque mate/.test(normalized) ? "#"
+      : /(?:^|\W)(?:xeque|check|jaque)(?:\W|$)/.test(normalized) ? "+" : "";
+    if (!suffix) return;
+    const latest = moveHistory.at(-1);
+    if (latest && Date.now() - latest.at < 5000) {
+      latest.suffix = suffix;
+      historyRenderedCount = -1;
+      renderHistory();
+    } else {
+      pendingOutcome = { suffix, at: Date.now() };
+    }
   }
 
   function clearArrows() {
@@ -1066,16 +1115,23 @@ const browser = globalThis.browser ?? globalThis.chrome;
       if (key === "language") languageChanged = true;
     }
     if (replacementChanged) { restoreText(); restorePresentation(); }
-    if (languageChanged) {
+    if (languageChanged || changes.theme) {
       historyHost?.remove();
       historyHost = null;
       historyList = null;
       historyRenderedCount = -1;
     }
+    if (changes.pieceNotation) historyRenderedCount = -1;
     if (relevant) scheduleRefresh();
   });
 
-  const observer = new MutationObserver(() => scheduleRefresh());
+  const observer = new MutationObserver((records) => {
+    for (const record of records) {
+      if (record.type === "characterData") detectOutcomeText(record.target.parentElement?.textContent || record.target.data);
+      for (const node of record.addedNodes || []) detectOutcomeText(node.textContent);
+    }
+    scheduleRefresh();
+  });
   function observeRoot(root) {
     if (observedRoots.has(root)) return;
     observer.observe(root, {
@@ -1099,3 +1155,4 @@ const browser = globalThis.browser ?? globalThis.chrome;
   setInterval(() => { if (arrowCanvas) renderArrows(); }, 500);
   setInterval(() => { if (active && settings.historyEnabled) renderHistory(); }, 500);
 })();
+

@@ -7,6 +7,11 @@
   "interfaceLanguage": { "message": "Idioma da interface" },
   "languageAuto": { "message": "Automático" },
   "languageSaved": { "message": "Idioma salvo." },
+  "appearance": { "message": "Aparência" },
+  "themeSystem": { "message": "Sistema" },
+  "themeLight": { "message": "Claro" },
+  "themeDark": { "message": "Escuro" },
+  "themeSaved": { "message": "Tema salvo." },
   "replaceWord": { "message": "Trocar palavra" },
   "replaceWordHelp": { "message": "Nos textos de lições e partidas. A fala não muda." },
   "originalWord": { "message": "Palavra original" },
@@ -27,6 +32,10 @@
   "planningArrowsHelp": { "message": "Arraste com o botão direito para desenhar. Clique com o direito para limpar." },
   "moveHistory": { "message": "Histórico das jogadas" },
   "moveHistoryHelp": { "message": "Mostrar lances confirmados ao lado do tabuleiro, com a peça e as posições." },
+  "pieceNotation": { "message": "Peças no histórico" },
+  "pieceSymbols": { "message": "Símbolos (♞)" },
+  "pieceLetters": { "message": "Letras (C)" },
+  "notationSaved": { "message": "Formato das peças salvo." },
   "lockBoard": { "message": "Fixar o tabuleiro" },
   "lockBoardHelp": { "message": "Evitar o arrasto nativo do canvas e da imagem de fundo." },
   "createdBy": { "message": "Criado por" },
@@ -76,3 +85,4 @@
   "you": { "message": "Você" },
   "opponent": { "message": "Adversário" }
 }
+

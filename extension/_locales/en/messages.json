@@ -7,6 +7,11 @@
   "interfaceLanguage": { "message": "Interface language" },
   "languageAuto": { "message": "Automatic" },
   "languageSaved": { "message": "Language saved." },
+  "appearance": { "message": "Appearance" },
+  "themeSystem": { "message": "System" },
+  "themeLight": { "message": "Light" },
+  "themeDark": { "message": "Dark" },
+  "themeSaved": { "message": "Theme saved." },
   "replaceWord": { "message": "Replace a word" },
   "replaceWordHelp": { "message": "In lesson and match text. Recorded speech does not change." },
   "originalWord": { "message": "Original word" },
@@ -27,6 +32,10 @@
   "planningArrowsHelp": { "message": "Right-drag to draw. Right-click to clear." },
   "moveHistory": { "message": "Move history" },
   "moveHistoryHelp": { "message": "Show confirmed moves beside the board with the piece and squares." },
+  "pieceNotation": { "message": "Pieces in history" },
+  "pieceSymbols": { "message": "Symbols (♞)" },
+  "pieceLetters": { "message": "Letters (N)" },
+  "notationSaved": { "message": "Piece format saved." },
   "lockBoard": { "message": "Lock the board" },
   "lockBoardHelp": { "message": "Prevent native dragging of the canvas and board image." },
   "createdBy": { "message": "Created by" },
@@ -76,3 +85,4 @@
   "you": { "message": "You" },
   "opponent": { "message": "Opponent" }
 }
+

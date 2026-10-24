@@ -7,12 +7,14 @@ let manualCatalog = null;
 const fallbackMessages = {
   popupTitle: "Opções do CheckLingo", replaceWord: "Trocar palavra", replaceWordHelp: "Nos textos de lições e partidas. A fala não muda.",
   interfaceLanguage: "Idioma da interface", languageAuto: "Automático", languageSaved: "Idioma salvo.",
+  appearance: "Aparência", themeSystem: "Sistema", themeLight: "Claro", themeDark: "Escuro", themeSaved: "Tema salvo.",
   originalWord: "Palavra original", replacementWord: "Trocar por", saveReplacement: "Salvar troca",
   highlightLastMove: "Destacar última jogada", highlightLastMoveHelp: "Marcar as casas de origem e destino.",
   yourMove: "Sua jogada", opponentMove: "Jogada do adversário", playerPalette: "Cores prontas para sua jogada", opponentPalette: "Cores prontas para a jogada do adversário",
   boardCoordinates: "Coordenadas no tabuleiro", boardCoordinatesHelp: "Mostrar letras e números nas casas da borda.", piecesAtBottom: "Peças na parte de baixo", darkPieces: "Escuras", lightPieces: "Claras",
   planningArrows: "Setas de planejamento", planningArrowsHelp: "Arraste com o botão direito para desenhar. Clique com o direito para limpar.",
   moveHistory: "Histórico das jogadas", moveHistoryHelp: "Mostrar lances confirmados ao lado do tabuleiro, com a peça e as posições.",
+  pieceNotation: "Peças no histórico", pieceSymbols: "Símbolos (♞)", pieceLetters: "Letras (C)", notationSaved: "Formato das peças salvo.",
   lockBoard: "Fixar o tabuleiro", lockBoardHelp: "Evitar o arrasto nativo do canvas e da imagem de fundo.", createdBy: "Criado por",
   shortcut: "Atalho: $1", shortcutUndefined: "Atalho não definido; configure em about:addons.", shortcutSee: "Atalho: veja em about:addons.",
   colorSaved: "Cor salva.", colorSaveError: "Não foi possível salvar a cor.", waitingChess: "Aguardando uma lição ou partida de xadrez.",
@@ -69,7 +71,7 @@ async function applyLanguage(language) {
 
 localizePopup();
 
-const defaults = { language: "auto", replaceEnabled: true, fromWord: "dama", toWord: "rainha", highlightLastMove: true, preventBoardDrag: true, highlightColor: "#ffe36a", opponentHighlightColor: "#ff9b49", coordinatesEnabled: true, coordinateOrientation: "black", arrowsEnabled: true, historyEnabled: true };
+const defaults = { language: "auto", theme: "system", pieceNotation: "symbol", replaceEnabled: true, fromWord: "dama", toWord: "rainha", highlightLastMove: true, preventBoardDrag: true, highlightColor: "#ffe36a", opponentHighlightColor: "#ff9b49", coordinatesEnabled: true, coordinateOrientation: "black", arrowsEnabled: true, historyEnabled: true };
 const status = document.getElementById("status");
 const pageStatus = document.getElementById("pageStatus");
 const saveButton = document.getElementById("saveWords");
@@ -188,6 +190,20 @@ async function initialize() {
         status.textContent = t("saveError");
       }
     });
+    const theme = document.getElementById("theme");
+    const applyTheme = (value) => {
+      const dark = value === "dark" || (value === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+    };
+    theme.value = ["system", "light", "dark"].includes(settings.theme) ? settings.theme : "system";
+    applyTheme(theme.value);
+    theme.addEventListener("change", async () => {
+      await browser.storage.local.set({ theme: theme.value });
+      currentSettings.theme = theme.value;
+      applyTheme(theme.value);
+      status.textContent = t("themeSaved");
+    });
+    matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => { if (theme.value === "system") applyTheme("system"); });
     for (const id of ["fromWord", "toWord"]) document.getElementById(id).value = settings[id];
     for (const id of ["replaceEnabled", "highlightLastMove", "coordinatesEnabled", "arrowsEnabled", "historyEnabled", "preventBoardDrag"]) {
       const input = document.getElementById(id);
@@ -217,6 +233,13 @@ async function initialize() {
         status.textContent = t("orientationSaveError");
       }
     });
+    const notation = document.getElementById("pieceNotation");
+    notation.value = settings.pieceNotation === "letter" ? "letter" : "symbol";
+    notation.addEventListener("change", async () => {
+      await browser.storage.local.set({ pieceNotation: notation.value });
+      currentSettings.pieceNotation = notation.value;
+      status.textContent = t("notationSaved");
+    });
     for (const key of colorKeys) {
       const input = colorInputs[key];
       updateColorUI(key, validColor(settings[key]) ? settings[key] : defaults[key]);
@@ -232,3 +255,4 @@ async function initialize() {
 
 initialize();
 showShortcut();
+

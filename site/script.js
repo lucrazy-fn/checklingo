@@ -1,65 +1,44 @@
 "use strict";
 
-const board = document.getElementById("demoBoard");
-const pill = document.getElementById("movePill");
-const pieces = {
-  0: "♜", 1: "♞", 2: "♝", 3: "♛", 4: "♚", 5: "♝", 6: "♞", 7: "♜",
-  8: "♟", 9: "♟", 10: "♟", 11: "♟", 12: "♟", 13: "♟", 14: "♟", 15: "♟",
-  48: "♙", 49: "♙", 50: "♙", 51: "♙", 52: "♙", 53: "♙", 54: "♙", 55: "♙",
-  56: "♖", 57: "♘", 58: "♗", 59: "♕", 60: "♔", 61: "♗", 62: "♘", 63: "♖"
+const translations = {
+  pt: {
+    title: "CheckLingo — seu xadrez, do seu jeito", description: "CheckLingo melhora o xadrez do Duolingo com destaque de jogadas, coordenadas, setas, histórico e ajustes de texto.",
+    navFeatures:"Recursos",navInstall:"Instalação",navPrivacy:"Privacidade",download:"Baixar",heroEyebrow:"Extensão independente e gratuita",heroTitle:"Seu xadrez.<br><span>Do seu jeito.</span>",heroText:"Mais clareza nas lições e partidas do Duolingo: destaque de jogadas, coordenadas, setas, histórico e palavras personalizadas.",firefox:"Firefox",chromium:"Chrome e Chromium",microcopy:"Manifest V3 · versão 1.0.0 · português, inglês e espanhol",
+    featuresEyebrow:"Um tabuleiro mais legível",featuresTitle:"Pequenos ajustes.<br>Uma partida bem melhor.",featuresText:"O CheckLingo fica quieto quando você não precisa e aparece exatamente onde ajuda.",
+    f1Title:"Última jogada em evidência",f1Text:"Origem e destino recebem cores diferentes para você e para o adversário. Sem confundir uma animação com uma jogada concluída.",f2Title:"Setas de planejamento",f2Text:"Arraste com o botão direito e marque a ideia antes de mover.",f3Title:"Coordenadas nas bordas",f3Text:"Letras e números alinhados ao tabuleiro, com orientação clara ou escura.",f4Title:"Histórico da partida",you1:"1. Você",opponent2:"2. Adversário",you3:"3. Você",f5Title:"As palavras que você prefere",f5Text:"Escolha uma palavra e por qual ela será trocada nos textos de xadrez.",f6Title:"Tabuleiro no lugar",f6Text:"Bloqueia o arrasto acidental do fundo sem atrapalhar o movimento das peças.",
+    installEyebrow:"Instalação em menos de um minuto",installTitle:"Baixou, carregou, jogou.",extractZip:"Extraia o arquivo ZIP.",openFirefox:"Abra <code>about:debugging</code>.",loadManifest:"Carregue o <code>manifest.json</code>.",reloadDuolingo:"Recarregue o Duolingo.",downloadFirefox:"Baixar para Firefox",openChrome:"Abra <code>chrome://extensions</code>.",enableDev:"Ative o modo do desenvolvedor.",loadUnpacked:"Use “Carregar sem compactação”.",downloadChromium:"Baixar para Chromium",
+    privacyEyebrow:"Privacidade simples",privacyTitle:"Seu jogo fica no seu navegador.",privacyText:"O CheckLingo só atua nas páginas do Duolingo e guarda as preferências localmente. Não possui anúncios, conta própria ou coleta de dados.",noTracking:"Sem rastreamento",noAds:"Sem anúncios",openSource:"Código aberto",ctaEyebrow:"Pronto para a próxima jogada?",ctaTitle:"Deixe o tabuleiro trabalhar com você.",chooseBrowser:"Escolher navegador",footerText:"Criado por <strong>lucrazy-fn</strong> · Projeto independente, não afiliado ao Duolingo.",backTop:"Voltar ao topo ↑",you:"Você",opponent:"Adversário",theme:"Alternar tema"
+  },
+  en: {
+    title:"CheckLingo — chess, your way",description:"CheckLingo improves Duolingo Chess with move highlights, coordinates, arrows, history and text customization.",navFeatures:"Features",navInstall:"Installation",navPrivacy:"Privacy",download:"Download",heroEyebrow:"Independent and free extension",heroTitle:"Your chess.<br><span>Your way.</span>",heroText:"More clarity in Duolingo lessons and matches: move highlights, coordinates, arrows, history and custom words.",firefox:"Firefox",chromium:"Chrome and Chromium",microcopy:"Manifest V3 · version 1.0.0 · Portuguese, English and Spanish",
+    featuresEyebrow:"A clearer board",featuresTitle:"Small adjustments.<br>A much better game.",featuresText:"CheckLingo stays out of the way until it can help.",f1Title:"Keep the last move visible",f1Text:"Origin and destination use separate colors for you and your opponent. Only completed moves are counted.",f2Title:"Planning arrows",f2Text:"Right-drag to mark an idea before you move.",f3Title:"Board coordinates",f3Text:"Files and ranks line up with the board in either orientation.",f4Title:"Game history",you1:"1. You",opponent2:"2. Opponent",you3:"3. You",f5Title:"Use the words you prefer",f5Text:"Choose a chess word and what should replace it.",f6Title:"Keep the board in place",f6Text:"Stops accidental background dragging without blocking piece movement.",
+    installEyebrow:"Install in under a minute",installTitle:"Download, load, play.",extractZip:"Extract the ZIP file.",openFirefox:"Open <code>about:debugging</code>.",loadManifest:"Load <code>manifest.json</code>.",reloadDuolingo:"Reload Duolingo.",downloadFirefox:"Download for Firefox",openChrome:"Open <code>chrome://extensions</code>.",enableDev:"Enable Developer mode.",loadUnpacked:"Choose “Load unpacked”.",downloadChromium:"Download for Chromium",privacyEyebrow:"Simple privacy",privacyTitle:"Your game stays in your browser.",privacyText:"CheckLingo only runs on Duolingo pages and stores preferences locally. No ads, accounts or data collection.",noTracking:"No tracking",noAds:"No ads",openSource:"Open source",ctaEyebrow:"Ready for the next move?",ctaTitle:"Make the board work with you.",chooseBrowser:"Choose browser",footerText:"Created by <strong>lucrazy-fn</strong> · Independent project, not affiliated with Duolingo.",backTop:"Back to top ↑",you:"You",opponent:"Opponent",theme:"Toggle theme"
+  },
+  es: {
+    title:"CheckLingo — ajedrez a tu manera",description:"CheckLingo mejora el ajedrez de Duolingo con jugadas destacadas, coordenadas, flechas, historial y textos personalizados.",navFeatures:"Funciones",navInstall:"Instalación",navPrivacy:"Privacidad",download:"Descargar",heroEyebrow:"Extensión independiente y gratuita",heroTitle:"Tu ajedrez.<br><span>A tu manera.</span>",heroText:"Más claridad en las lecciones y partidas de Duolingo: jugadas destacadas, coordenadas, flechas, historial y palabras personalizadas.",firefox:"Firefox",chromium:"Chrome y Chromium",microcopy:"Manifest V3 · versión 1.0.0 · portugués, inglés y español",
+    featuresEyebrow:"Un tablero más claro",featuresTitle:"Pequeños ajustes.<br>Una partida mucho mejor.",featuresText:"CheckLingo no molesta cuando no lo necesitas y aparece justo donde ayuda.",f1Title:"Última jugada destacada",f1Text:"El origen y el destino usan colores distintos para ti y tu oponente. Solo cuenta jugadas terminadas.",f2Title:"Flechas de planificación",f2Text:"Arrastra con el botón derecho y marca la idea antes de mover.",f3Title:"Coordenadas del tablero",f3Text:"Letras y números alineados al tablero en ambas orientaciones.",f4Title:"Historial de la partida",you1:"1. Tú",opponent2:"2. Oponente",you3:"3. Tú",f5Title:"Usa las palabras que prefieras",f5Text:"Elige una palabra de ajedrez y por cuál se debe cambiar.",f6Title:"Tablero en su sitio",f6Text:"Evita arrastrar el fondo por accidente sin bloquear las piezas.",
+    installEyebrow:"Instalación en menos de un minuto",installTitle:"Descarga, carga y juega.",extractZip:"Extrae el archivo ZIP.",openFirefox:"Abre <code>about:debugging</code>.",loadManifest:"Carga <code>manifest.json</code>.",reloadDuolingo:"Recarga Duolingo.",downloadFirefox:"Descargar para Firefox",openChrome:"Abre <code>chrome://extensions</code>.",enableDev:"Activa el modo desarrollador.",loadUnpacked:"Usa “Cargar descomprimida”.",downloadChromium:"Descargar para Chromium",privacyEyebrow:"Privacidad sencilla",privacyTitle:"Tu partida queda en tu navegador.",privacyText:"CheckLingo solo funciona en páginas de Duolingo y guarda las preferencias localmente. Sin anuncios, cuentas ni recopilación de datos.",noTracking:"Sin rastreo",noAds:"Sin anuncios",openSource:"Código abierto",ctaEyebrow:"¿Listo para la próxima jugada?",ctaTitle:"Haz que el tablero trabaje contigo.",chooseBrowser:"Elegir navegador",footerText:"Creado por <strong>lucrazy-fn</strong> · Proyecto independiente, no afiliado a Duolingo.",backTop:"Volver arriba ↑",you:"Tú",opponent:"Oponente",theme:"Cambiar tema"
+  }
 };
 
-const moves = [
-  { from: 62, to: 45, label: "g1 → f3", side: "Você" },
-  { from: 6, to: 21, label: "g8 → f6", side: "Adversário", opponent: true },
-  { from: 52, to: 36, label: "e2 → e4", side: "Você" },
-  { from: 11, to: 27, label: "d7 → d5", side: "Adversário", opponent: true }
-];
-let moveIndex = 0;
-let position = { ...pieces };
+const languageSelect=document.getElementById("languageSelect");
+let language=localStorage.getItem("checklingo-language")||(/^en/i.test(navigator.language)?"en":/^es/i.test(navigator.language)?"es":"pt");
+if(!translations[language])language="pt";
+function applyLanguage(next){language=translations[next]?next:"pt";const words=translations[language];document.documentElement.lang=language==="pt"?"pt-BR":language;document.title=words.title;document.querySelector('meta[name="description"]')?.setAttribute("content",words.description);document.querySelectorAll("[data-i18n]").forEach((element)=>{if(words[element.dataset.i18n])element.textContent=words[element.dataset.i18n]});document.querySelectorAll("[data-i18n-html]").forEach((element)=>{if(words[element.dataset.i18nHtml])element.innerHTML=words[element.dataset.i18nHtml]});document.getElementById("themeToggle").setAttribute("aria-label",words.theme);document.getElementById("themeToggle").title=words.theme;languageSelect.value=language;localStorage.setItem("checklingo-language",language)}
+languageSelect.addEventListener("change",()=>applyLanguage(languageSelect.value));
 
-function renderBoard(move) {
-  board.replaceChildren();
-  for (let index = 0; index < 64; index++) {
-    const square = document.createElement("span");
-    square.className = "square";
-    if (move && (index === move.from || index === move.to)) square.classList.add(move.opponent ? "opponent-highlight" : "highlight");
-    if (position[index]) {
-      const piece = document.createElement("span");
-      piece.textContent = position[index];
-      if (move?.to === index) piece.className = "moving";
-      square.append(piece);
-    }
-    board.append(square);
-  }
-}
+const themeToggle=document.getElementById("themeToggle");
+let theme=localStorage.getItem("checklingo-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+function applyTheme(next){theme=next==="dark"?"dark":"light";document.documentElement.dataset.theme=theme;document.querySelector('meta[name="theme-color"]')?.setAttribute("content",theme==="dark"?"#0b1b21":"#f7f8ed");themeToggle.querySelector("span").textContent=theme==="dark"?"☀":"☾";localStorage.setItem("checklingo-theme",theme)}
+themeToggle.addEventListener("click",()=>applyTheme(theme==="dark"?"light":"dark"));
+applyTheme(theme);applyLanguage(language);
 
-function playMove() {
-  const move = moves[moveIndex];
-  if (!position[move.from]) position = { ...pieces };
-  position[move.to] = position[move.from];
-  delete position[move.from];
-  renderBoard(move);
-  pill.innerHTML = `<b>${move.side}</b><span>${move.label}</span>`;
-  moveIndex = (moveIndex + 1) % moves.length;
-  if (moveIndex === 0) setTimeout(() => { position = { ...pieces }; renderBoard(); }, 1600);
-}
+const board=document.getElementById("demoBoard");const pill=document.getElementById("movePill");
+const pieces={0:"♜",1:"♞",2:"♝",3:"♛",4:"♚",5:"♝",6:"♞",7:"♜",8:"♟",9:"♟",10:"♟",11:"♟",12:"♟",13:"♟",14:"♟",15:"♟",48:"♙",49:"♙",50:"♙",51:"♙",52:"♙",53:"♙",54:"♙",55:"♙",56:"♖",57:"♘",58:"♗",59:"♕",60:"♔",61:"♗",62:"♘",63:"♖"};
+const moves=[{from:62,to:45,label:"g1 → f3",side:"you"},{from:6,to:21,label:"g8 → f6",side:"opponent",opponent:true},{from:52,to:36,label:"e2 → e4",side:"you"},{from:11,to:27,label:"d7 → d5",side:"opponent",opponent:true}];let moveIndex=0;let position={...pieces};
+function renderBoard(move){board.replaceChildren();for(let index=0;index<64;index++){const square=document.createElement("span");square.className="square";if(move&&(index===move.from||index===move.to))square.classList.add(move.opponent?"opponent-highlight":"highlight");if(position[index]){const piece=document.createElement("span");piece.textContent=position[index];if(move?.to===index)piece.className="moving";square.append(piece)}board.append(square)}}
+function playMove(){const move=moves[moveIndex];if(!position[move.from])position={...pieces};position[move.to]=position[move.from];delete position[move.from];renderBoard(move);pill.replaceChildren();const side=document.createElement("b");side.textContent=translations[language][move.side];const label=document.createElement("span");label.textContent=move.label;pill.append(side,label);moveIndex=(moveIndex+1)%moves.length;if(moveIndex===0)setTimeout(()=>{position={...pieces};renderBoard()},1600)}
+renderBoard();setTimeout(playMove,700);if(!matchMedia("(prefers-reduced-motion: reduce)").matches)setInterval(playMove,2600);
+const observer=new IntersectionObserver((entries)=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}},{threshold:.12});
+document.querySelectorAll(".reveal").forEach((element,index)=>{element.style.transitionDelay=`${Math.min(index%4,3)*70}ms`;observer.observe(element)});
 
-renderBoard();
-setTimeout(playMove, 700);
-const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-if (!reduceMotion) setInterval(playMove, 2600);
-
-const observer = new IntersectionObserver((entries) => {
-  for (const entry of entries) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
-  }
-}, { threshold: .12 });
-
-document.querySelectorAll(".reveal").forEach((element, index) => {
-  element.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
-  observer.observe(element);
-});

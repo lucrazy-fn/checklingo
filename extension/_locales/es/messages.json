@@ -7,6 +7,11 @@
   "interfaceLanguage": { "message": "Idioma de la interfaz" },
   "languageAuto": { "message": "Automático" },
   "languageSaved": { "message": "Idioma guardado." },
+  "appearance": { "message": "Apariencia" },
+  "themeSystem": { "message": "Sistema" },
+  "themeLight": { "message": "Claro" },
+  "themeDark": { "message": "Oscuro" },
+  "themeSaved": { "message": "Tema guardado." },
   "replaceWord": { "message": "Cambiar una palabra" },
   "replaceWordHelp": { "message": "En textos de lecciones y partidas. La voz grabada no cambia." },
   "originalWord": { "message": "Palabra original" },
@@ -27,6 +32,10 @@
   "planningArrowsHelp": { "message": "Arrastra con el botón derecho para dibujar. Haz clic derecho para limpiar." },
   "moveHistory": { "message": "Historial de jugadas" },
   "moveHistoryHelp": { "message": "Mostrar jugadas confirmadas junto al tablero, con la pieza y las casillas." },
+  "pieceNotation": { "message": "Piezas en el historial" },
+  "pieceSymbols": { "message": "Símbolos (♞)" },
+  "pieceLetters": { "message": "Letras (C)" },
+  "notationSaved": { "message": "Formato de piezas guardado." },
   "lockBoard": { "message": "Fijar el tablero" },
   "lockBoardHelp": { "message": "Evitar el arrastre nativo del lienzo y de la imagen del tablero." },
   "createdBy": { "message": "Creado por" },
@@ -76,3 +85,4 @@
   "you": { "message": "Tú" },
   "opponent": { "message": "Oponente" }
 }
+
