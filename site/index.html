@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CheckLingo melhora o xadrez do Duolingo com destaque de jogadas, coordenadas, setas, histórico e ajustes de texto.">
+  <meta name="theme-color" content="#0d1f26">
+  <title>CheckLingo — seu xadrez, do seu jeito</title>
+  <link rel="icon" href="assets/checklingo-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="CheckLingo, início">
+      <img src="assets/checklingo-icon.png" alt="">
+      <span>CheckLingo</span>
+    </a>
+    <nav aria-label="Navegação principal">
+      <a href="#recursos">Recursos</a>
+      <a href="#instalar">Instalação</a>
+      <a href="#privacidade">Privacidade</a>
+    </nav>
+    <a class="header-cta" href="#baixar">Baixar</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy reveal">
+        <span class="eyebrow"><span class="status-dot"></span> Extensão independente e gratuita</span>
+        <h1>Seu xadrez.<br><span>Do seu jeito.</span></h1>
+        <p>Mais clareza nas lições e partidas do Duolingo: destaque de jogadas, coordenadas, setas, histórico e palavras personalizadas.</p>
+        <div class="hero-actions" id="baixar">
+          <a class="button primary" href="downloads/checklingo-firefox.zip" download>
+            <span class="browser-mark">◉</span>
+            Firefox
+          </a>
+          <a class="button secondary" href="downloads/checklingo-chromium.zip" download>
+            <span class="browser-mark">◎</span>
+            Chrome e Chromium
+          </a>
+        </div>
+        <p class="microcopy">Manifest V3 · versão 1.0.0 · português, inglês e espanhol</p>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="Demonstração animada do destaque de uma jogada">
+        <div class="orbit orbit-one" aria-hidden="true"></div>
+        <div class="orbit orbit-two" aria-hidden="true"></div>
+        <div class="board-window">
+          <div class="window-bar">
+            <span></span><span></span><span></span>
+            <small>duolingo.com/chess</small>
+          </div>
+          <div class="demo-board" id="demoBoard" role="img" aria-label="Tabuleiro demonstrando uma jogada destacada"></div>
+          <div class="move-pill" id="movePill"><b>Você</b><span>g1 → f3</span></div>
+        </div>
+        <img class="floating-king" src="assets/checklingo-icon.png" alt="Ícone do CheckLingo">
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Navegadores compatíveis">
+      <span>Firefox</span><i></i><span>Chrome</span><i></i><span>Brave</span><i></i><span>Edge</span><i></i><span>Vivaldi</span><i></i><span>Opera</span>
+    </section>
+
+    <section class="features section-shell" id="recursos">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Um tabuleiro mais legível</span>
+        <h2>Pequenos ajustes.<br>Uma partida bem melhor.</h2>
+        <p>O CheckLingo fica quieto quando você não precisa e aparece exatamente onde ajuda.</p>
+      </div>
+
+      <div class="bento-grid">
+        <article class="feature-card feature-wide reveal">
+          <div>
+            <span class="feature-number">01</span>
+            <h3>Última jogada em evidência</h3>
+            <p>Origem e destino recebem cores diferentes para você e para o adversário. Sem confundir uma animação com uma jogada concluída.</p>
+          </div>
+          <div class="mini-board" aria-hidden="true">
+            <span></span><span class="hot"></span><span></span><span></span>
+            <span></span><span></span><span class="piece">♞</span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span class="hot"></span><span></span><span></span><span></span>
+          </div>
+        </article>
+
+        <article class="feature-card reveal">
+          <span class="feature-number">02</span>
+          <div class="arrow-demo" aria-hidden="true"><span>♟</span><svg viewBox="0 0 180 82"><path d="M18 66 C65 68 98 22 151 20"></path><path d="m138 10 18 9-13 15"></path></svg></div>
+          <h3>Setas de planejamento</h3>
+          <p>Arraste com o botão direito e marque a ideia antes de mover.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <span class="feature-number">03</span>
+          <div class="coordinates-demo" aria-hidden="true"><span>a</span><span>b</span><span>c</span><span>d</span><b>8</b><b>7</b><b>6</b></div>
+          <h3>Coordenadas nas bordas</h3>
+          <p>Letras e números alinhados ao tabuleiro, com orientação clara ou escura.</p>
+        </article>
+
+        <article class="feature-card history-card reveal">
+          <span class="feature-number">04</span>
+          <h3>Histórico da partida</h3>
+          <div class="history-list" aria-label="Exemplo de histórico">
+            <div><span class="piece-icon">♟</span><p><small>1. Você</small>e2 → e4</p></div>
+            <div><span class="piece-icon">♞</span><p><small>2. Adversário</small>g8 → f6</p></div>
+            <div><span class="piece-icon">♗</span><p><small>3. Você</small>f1 → c4</p></div>
+          </div>
+        </article>
+
+        <article class="feature-card words-card reveal">
+          <span class="feature-number">05</span>
+          <h3>As palavras que você prefere</h3>
+          <p>Escolha uma palavra e por qual ela será trocada nos textos de xadrez.</p>
+          <div class="word-swap" aria-label="Exemplo: dama trocada por rainha"><del>dama</del><span>→</span><strong>rainha</strong></div>
+        </article>
+
+        <article class="feature-card reveal">
+          <span class="feature-number">06</span>
+          <div class="lock-demo" aria-hidden="true"><span>♜</span><b>✓</b></div>
+          <h3>Tabuleiro no lugar</h3>
+          <p>Bloqueia o arrasto acidental do fundo sem atrapalhar o movimento das peças.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="install section-shell" id="instalar">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Instalação em menos de um minuto</span>
+        <h2>Baixou, carregou, jogou.</h2>
+      </div>
+      <div class="install-grid">
+        <article class="install-card reveal">
+          <div class="install-title"><span>◉</span><h3>Firefox</h3></div>
+          <ol>
+            <li><b>01</b><span>Extraia o arquivo ZIP.</span></li>
+            <li><b>02</b><span>Abra <code>about:debugging</code>.</span></li>
+            <li><b>03</b><span>Carregue o <code>manifest.json</code>.</span></li>
+            <li><b>04</b><span>Recarregue o Duolingo.</span></li>
+          </ol>
+          <a href="downloads/checklingo-firefox.zip" download>Baixar para Firefox <span>↓</span></a>
+        </article>
+        <article class="install-card reveal">
+          <div class="install-title"><span>◎</span><h3>Chrome e Chromium</h3></div>
+          <ol>
+            <li><b>01</b><span>Extraia o arquivo ZIP.</span></li>
+            <li><b>02</b><span>Abra <code>chrome://extensions</code>.</span></li>
+            <li><b>03</b><span>Ative o modo do desenvolvedor.</span></li>
+            <li><b>04</b><span>Use “Carregar sem compactação”.</span></li>
+          </ol>
+          <a href="downloads/checklingo-chromium.zip" download>Baixar para Chromium <span>↓</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="privacy section-shell reveal" id="privacidade">
+      <div class="privacy-mark" aria-hidden="true">✓</div>
+      <div>
+        <span class="eyebrow">Privacidade simples</span>
+        <h2>Seu jogo fica no seu navegador.</h2>
+        <p>O CheckLingo só atua nas páginas do Duolingo e guarda as preferências localmente. Não possui anúncios, conta própria ou coleta de dados.</p>
+      </div>
+      <div class="privacy-list">
+        <span>Sem rastreamento</span>
+        <span>Sem anúncios</span>
+        <span>Código aberto</span>
+      </div>
+    </section>
+
+    <section class="final-cta section-shell reveal">
+      <img src="assets/checklingo-icon.png" alt="">
+      <div>
+        <span class="eyebrow">Pronto para a próxima jogada?</span>
+        <h2>Deixe o tabuleiro trabalhar com você.</h2>
+      </div>
+      <a class="button primary" href="#baixar">Escolher navegador</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="#top"><img src="assets/checklingo-icon.png" alt=""><span>CheckLingo</span></a>
+    <p>Criado por <strong>lucrazy-fn</strong> · Projeto independente, não afiliado ao Duolingo.</p>
+    <a href="#top">Voltar ao topo ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

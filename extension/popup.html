@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="popupTitle">Opções do CheckLingo</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>CheckLingo <small id="version"></small></h1>
+    <label class="orientation-option language-option"><span data-i18n="interfaceLanguage">Idioma da interface</span>
+      <select id="language">
+        <option value="auto" data-i18n="languageAuto">Automático</option>
+        <option value="pt_BR">Português</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>
+    </label>
+    <label class="option">
+      <span><strong data-i18n="replaceWord">Trocar palavra</strong><small data-i18n="replaceWordHelp">Nos textos de lições e partidas. A fala não muda.</small></span>
+      <input id="replaceEnabled" type="checkbox">
+    </label>
+    <div class="word-fields">
+      <label><span data-i18n="originalWord">Palavra original</span><input id="fromWord" type="text" maxlength="40" autocomplete="off" spellcheck="false"></label>
+      <label><span data-i18n="replacementWord">Trocar por</span><input id="toWord" type="text" maxlength="40" autocomplete="off" spellcheck="false"></label>
+    </div>
+    <button id="saveWords" type="button" data-i18n="saveReplacement">Salvar troca</button>
+    <label class="option">
+      <span><strong data-i18n="highlightLastMove">Destacar última jogada</strong><small data-i18n="highlightLastMoveHelp">Marcar as casas de origem e destino.</small><small id="shortcutLabel">Atalho: Alt+Shift+H</small></span>
+      <input id="highlightLastMove" type="checkbox">
+    </label>
+    <label class="color-option"><span data-i18n="yourMove">Sua jogada</span> <input id="highlightColor" type="color" value="#ffe36a"></label>
+    <div id="playerPalette" class="color-swatches" role="group" aria-label="Cores prontas para sua jogada">
+      <button class="swatch" type="button" data-setting="highlightColor" data-color="#ffe36a" aria-label="Sua jogada: amarelo" style="--swatch:#ffe36a"></button>
+      <button class="swatch" type="button" data-setting="highlightColor" data-color="#79d84b" aria-label="Sua jogada: verde" style="--swatch:#79d84b"></button>
+      <button class="swatch" type="button" data-setting="highlightColor" data-color="#55c8ff" aria-label="Sua jogada: azul" style="--swatch:#55c8ff"></button>
+      <button class="swatch" type="button" data-setting="highlightColor" data-color="#ff7db8" aria-label="Sua jogada: rosa" style="--swatch:#ff7db8"></button>
+      <button class="swatch" type="button" data-setting="highlightColor" data-color="#ff9b49" aria-label="Sua jogada: laranja" style="--swatch:#ff9b49"></button>
+      <button class="swatch" type="button" data-setting="highlightColor" data-color="#bd8cff" aria-label="Sua jogada: roxo" style="--swatch:#bd8cff"></button>
+    </div>
+    <label class="color-option"><span data-i18n="opponentMove">Jogada do adversário</span> <input id="opponentHighlightColor" type="color" value="#ff9b49"></label>
+    <div id="opponentPalette" class="color-swatches" role="group" aria-label="Cores prontas para a jogada do adversário">
+      <button class="swatch" type="button" data-setting="opponentHighlightColor" data-color="#ffe36a" aria-label="Adversário: amarelo" style="--swatch:#ffe36a"></button>
+      <button class="swatch" type="button" data-setting="opponentHighlightColor" data-color="#79d84b" aria-label="Adversário: verde" style="--swatch:#79d84b"></button>
+      <button class="swatch" type="button" data-setting="opponentHighlightColor" data-color="#55c8ff" aria-label="Adversário: azul" style="--swatch:#55c8ff"></button>
+      <button class="swatch" type="button" data-setting="opponentHighlightColor" data-color="#ff7db8" aria-label="Adversário: rosa" style="--swatch:#ff7db8"></button>
+      <button class="swatch" type="button" data-setting="opponentHighlightColor" data-color="#ff9b49" aria-label="Adversário: laranja" style="--swatch:#ff9b49"></button>
+      <button class="swatch" type="button" data-setting="opponentHighlightColor" data-color="#bd8cff" aria-label="Adversário: roxo" style="--swatch:#bd8cff"></button>
+    </div>
+    <label class="option">
+      <span><strong data-i18n="boardCoordinates">Coordenadas no tabuleiro</strong><small data-i18n="boardCoordinatesHelp">Mostrar letras e números nas casas da borda.</small></span>
+      <input id="coordinatesEnabled" type="checkbox">
+    </label>
+    <label class="orientation-option"><span data-i18n="piecesAtBottom">Peças na parte de baixo</span>
+      <select id="coordinateOrientation">
+        <option value="black" data-i18n="darkPieces">Escuras</option>
+        <option value="white" data-i18n="lightPieces">Claras</option>
+      </select>
+    </label>
+    <label class="option">
+      <span><strong data-i18n="planningArrows">Setas de planejamento</strong><small data-i18n="planningArrowsHelp">Arraste com o botão direito para desenhar. Clique com o direito para limpar.</small></span>
+      <input id="arrowsEnabled" type="checkbox">
+    </label>
+    <label class="option">
+      <span><strong data-i18n="moveHistory">Histórico das jogadas</strong><small data-i18n="moveHistoryHelp">Mostrar lances confirmados ao lado do tabuleiro, com a peça e as posições.</small></span>
+      <input id="historyEnabled" type="checkbox">
+    </label>
+    <label class="option">
+      <span><strong data-i18n="lockBoard">Fixar o tabuleiro</strong><small data-i18n="lockBoardHelp">Evitar o arrasto nativo do canvas e da imagem de fundo.</small></span>
+      <input id="preventBoardDrag" type="checkbox">
+    </label>
+    <p id="pageStatus" role="status" aria-live="polite"></p>
+    <p id="status" role="status" aria-live="polite"></p>
+    <footer><span data-i18n="createdBy">Criado por</span> <strong>lucrazy-fn</strong></footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

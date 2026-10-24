@@ -47,4 +47,3 @@ O CheckLingo funciona localmente no navegador. As preferências são armazenadas
 Distribuído sob a [licença MIT](LICENSE).
 
 CheckLingo é um projeto independente e não possui vínculo oficial com o Duolingo.
-

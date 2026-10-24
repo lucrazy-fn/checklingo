@@ -1,0 +1,29 @@
+:root { color-scheme: light; font-family: system-ui, sans-serif; }
+body { width: 310px; margin: 0; color: #263047; background: #fff; }
+main { padding: 16px; }
+h1 { margin: 0 0 12px; font-size: 17px; }
+h1 small { font-size: 10px; font-weight: 500; color: #748096; }
+.option { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid #e7eaf0; cursor: pointer; }
+.option span { display: grid; gap: 3px; }
+.option strong { font-size: 13px; }
+.option small { font-size: 11px; line-height: 1.35; color: #596579; }
+input[type="checkbox"] { width: 19px; height: 19px; margin: 0; accent-color: #54a61f; cursor: pointer; }
+.color-option { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid #e7eaf0; font-size: 13px; font-weight: 700; }
+.color-option input { width: 42px; height: 30px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.color-swatches { display: flex; gap: 8px; padding: 0 0 12px; }
+.color-swatches .swatch { width: 28px; height: 28px; flex: none; margin: 0; padding: 0; border: 2px solid #fff; border-radius: 50%; background: var(--swatch); box-shadow: 0 0 0 1px #b8c2d0; }
+.color-swatches .swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px #263047; }
+.color-swatches .swatch:focus-visible { outline: 2px solid #263047; outline-offset: 3px; }
+.orientation-option { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 0 12px; font-size: 12px; color: #596579; }
+.orientation-option select { padding: 6px; border: 1px solid #c9d1de; border-radius: 8px; background: #fff; color: #263047; font: 12px system-ui, sans-serif; }
+.language-option { padding-top: 2px; }
+.word-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 3px 0 8px; }
+.word-fields label { display: grid; gap: 5px; font-size: 11px; font-weight: 700; color: #596579; }
+.word-fields input { box-sizing: border-box; width: 100%; padding: 8px; border: 1px solid #c9d1de; border-radius: 8px; font: 13px system-ui, sans-serif; }
+.word-fields input:focus { outline: 2px solid #78c42a; outline-offset: 1px; }
+button { width: 100%; margin-top: 8px; padding: 9px 12px; border: 0; border-radius: 10px; background: #78c42a; color: #122314; font: 700 12px system-ui, sans-serif; cursor: pointer; }
+button:hover { background: #8bd43a; }
+button:disabled { opacity: .55; cursor: wait; }
+#status { min-height: 14px; margin: 4px 0 0; font-size: 11px; color: #6c768a; }
+#pageStatus { margin: 6px 0 0; padding: 9px; border-radius: 8px; background: #f3f8ed; color: #2e5630; font-size: 11px; line-height: 1.4; }
+footer { margin-top: 10px; border-top: 1px solid #e7eaf0; padding-top: 10px; color: #6c768a; font-size: 11px; }
