@@ -82,7 +82,7 @@ button:focus-visible, a:focus-visible, select:focus-visible { outline: 3px solid
 .button.primary { background: var(--lime); color: var(--accent-ink); box-shadow: 0 8px 20px rgba(115, 190, 0, .22); }
 .button.primary:hover { box-shadow: 0 11px 26px rgba(115, 190, 0, .3); }
 .button.secondary { background: var(--surface-solid); border-color: var(--line); }
-.browser-mark { font-size: 20px; }
+.browser-logo { width: 23px; height: 23px; object-fit: contain; }
 .hero-copy .microcopy { margin-top: 18px; font-size: 11px; letter-spacing: .04em; }
 
 .hero-visual { position: relative; min-height: 560px; display: grid; place-items: center; isolation: isolate; }
@@ -149,7 +149,7 @@ button:focus-visible, a:focus-visible, select:focus-visible { outline: 3px solid
 .install .section-heading { grid-template-columns: 1fr; }
 .install-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .install-card { padding: 34px; border: 1px solid var(--line); border-radius: 28px; background: var(--surface-solid); }
-.install-title { display: flex; align-items: center; gap: 14px; }.install-title > span { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 13px; background: var(--lime-light); font-size: 22px; }.install-title h3 { margin: 0; font-size: 24px; }
+.install-title { display: flex; align-items: center; gap: 14px; }.install-title > span { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }.install-title img { width: 30px; height: 30px; object-fit: contain; }.install-title h3 { margin: 0; font-size: 24px; }
 .install-card ol { list-style: none; margin: 30px 0; padding: 0; border-top: 1px solid var(--line); }
 .install-card li { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); color: var(--text-soft); font-size: 14px; }.install-card li b { color: #8aa000; font: 800 11px ui-monospace, monospace; }.install-card code { padding: 3px 6px; border-radius: 5px; background: color-mix(in srgb,var(--surface-solid) 75%,#8ee000 25%); color: var(--ink); }
 .install-card > a { display: flex; justify-content: space-between; font-weight: 900; text-decoration: none; }.install-card > a span { transition: transform .2s ease; }.install-card > a:hover span { transform: translateY(4px); }
