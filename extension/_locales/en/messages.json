@@ -1,6 +1,6 @@
 {
   "extensionName": { "message": "CheckLingo" },
-  "extensionDescription": { "message": "Customizes words in Duolingo Chess, adds coordinates, move history, arrows and last-move highlights, and keeps the board from being dragged." },
+  "extensionDescription": { "message": "Customizes Duolingo Chess with word replacements, coordinates, move history, planning arrows, highlights and a fixed board." },
   "actionTitle": { "message": "CheckLingo options" },
   "commandToggleHighlight": { "message": "Turn the last-move highlight on or off" },
   "popupTitle": { "message": "CheckLingo options" },
@@ -85,4 +85,3 @@
   "you": { "message": "You" },
   "opponent": { "message": "Opponent" }
 }
-

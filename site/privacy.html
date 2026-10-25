@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Política de privacidade do CheckLingo.">
+  <title>Privacidade | CheckLingo</title>
+  <link rel="icon" href="assets/checklingo-icon.png">
+  <link rel="stylesheet" href="styles.css?v=1.0.0-store">
+</head>
+<body class="policy-page">
+  <main class="policy-shell">
+    <a class="policy-back" href="index.html#privacidade">← Voltar ao CheckLingo</a>
+    <span class="eyebrow">CheckLingo</span>
+    <h1>Política de privacidade</h1>
+    <p class="policy-updated">Última atualização: 24 de outubro de 2026</p>
+
+    <section class="policy-language" lang="pt-BR">
+      <h2>Português</h2>
+      <p>O CheckLingo é uma extensão independente criada por <strong>lucrazy-fn</strong> para personalizar e melhorar as lições e partidas de xadrez do Duolingo.</p>
+      <h3>Dados processados</h3>
+      <p>A extensão lê, apenas no navegador, o conteúdo necessário das páginas do Duolingo para identificar textos e o tabuleiro de xadrez. Isso permite substituir palavras, destacar jogadas, mostrar coordenadas, desenhar setas e montar o histórico da partida.</p>
+      <h3>Preferências armazenadas</h3>
+      <p>Idioma, tema, palavras personalizadas, cores e opções dos recursos são salvos com <code>storage.local</code>. Esses dados permanecem no navegador e podem ser removidos ao apagar os dados ou desinstalar a extensão.</p>
+      <h3>Transmissão e compartilhamento</h3>
+      <p>O CheckLingo não envia dados para servidores do desenvolvedor, não vende informações, não usa anúncios, não cria perfis e não compartilha dados com terceiros. A extensão não exige conta.</p>
+      <h3>Permissões</h3>
+      <p>A permissão de armazenamento salva preferências localmente. O acesso a <code>duolingo.com</code> é usado somente para executar os recursos descritos nas páginas de xadrez.</p>
+      <h3>Uso limitado</h3>
+      <p>O uso de informações pelo CheckLingo segue a Política de Dados do Usuário da Chrome Web Store, incluindo os requisitos de Uso Limitado.</p>
+      <h3>Contato</h3>
+      <p>Dúvidas podem ser enviadas pelo <a href="https://github.com/lucrazy-fn/checklingo/issues">GitHub Issues do CheckLingo</a>.</p>
+    </section>
+
+    <section class="policy-language" lang="en">
+      <h2>English</h2>
+      <p>CheckLingo is an independent extension created by <strong>lucrazy-fn</strong> to customize and improve Duolingo Chess lessons and matches.</p>
+      <h3>Data processed</h3>
+      <p>The extension locally reads the page content required to identify chess text and the board on Duolingo. This enables word replacement, move highlights, coordinates, planning arrows and move history.</p>
+      <h3>Stored preferences</h3>
+      <p>Language, theme, custom words, colors and feature settings are saved with <code>storage.local</code>. This information remains in the browser and can be removed by clearing extension data or uninstalling CheckLingo.</p>
+      <h3>Transmission and sharing</h3>
+      <p>CheckLingo does not send data to developer servers, sell information, display ads, build profiles or share data with third parties. No account is required.</p>
+      <h3>Permissions</h3>
+      <p>The storage permission saves preferences locally. Access to <code>duolingo.com</code> is used only to provide the described features on chess pages.</p>
+      <h3>Limited Use</h3>
+      <p>CheckLingo's use of information complies with the Chrome Web Store User Data Policy, including the Limited Use requirements.</p>
+      <h3>Contact</h3>
+      <p>Questions can be submitted through <a href="https://github.com/lucrazy-fn/checklingo/issues">CheckLingo GitHub Issues</a>.</p>
+    </section>
+
+    <section class="policy-language" lang="es">
+      <h2>Español</h2>
+      <p>CheckLingo es una extensión independiente creada por <strong>lucrazy-fn</strong> para personalizar y mejorar las lecciones y partidas de ajedrez de Duolingo.</p>
+      <h3>Datos procesados</h3>
+      <p>La extensión lee localmente el contenido necesario de las páginas de Duolingo para identificar textos y el tablero de ajedrez. Esto permite cambiar palabras, resaltar jugadas, mostrar coordenadas, dibujar flechas y crear el historial.</p>
+      <h3>Preferencias almacenadas</h3>
+      <p>El idioma, tema, palabras personalizadas, colores y opciones se guardan con <code>storage.local</code>. La información permanece en el navegador y se puede eliminar al borrar los datos o desinstalar la extensión.</p>
+      <h3>Transmisión y uso compartido</h3>
+      <p>CheckLingo no envía datos a servidores del desarrollador, no vende información, no muestra anuncios, no crea perfiles y no comparte datos con terceros. No requiere una cuenta.</p>
+      <h3>Permisos</h3>
+      <p>El permiso de almacenamiento guarda las preferencias localmente. El acceso a <code>duolingo.com</code> se usa únicamente para ofrecer las funciones descritas en las páginas de ajedrez.</p>
+      <h3>Uso limitado</h3>
+      <p>El uso de la información por CheckLingo cumple la Política de Datos de Usuario de Chrome Web Store, incluidos los requisitos de Uso Limitado.</p>
+      <h3>Contacto</h3>
+      <p>Las preguntas se pueden enviar mediante <a href="https://github.com/lucrazy-fn/checklingo/issues">GitHub Issues de CheckLingo</a>.</p>
+    </section>
+  </main>
+  <script>
+    const savedTheme = localStorage.getItem("checklingo-theme");
+    if (savedTheme === "dark" || savedTheme === "light") document.documentElement.dataset.theme = savedTheme;
+    else if (matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.dataset.theme = "dark";
+  </script>
+</body>
+</html>
+

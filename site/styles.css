@@ -158,6 +158,18 @@ button:focus-visible, a:focus-visible, select:focus-visible { outline: 3px solid
 .privacy-mark { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 22px; background: var(--lime); color: var(--accent-ink); font-size: 30px; font-weight: 900; transform: rotate(-6deg); }
 .privacy .eyebrow { color: #9eb4ba; }.privacy h2 { margin: 10px 0 12px; font-size: clamp(32px,4vw,54px); letter-spacing: -.05em; }.privacy p { max-width: 670px; margin: 0; color: #9eb4ba; line-height: 1.65; }
 .privacy-list { display: grid; gap: 8px; }.privacy-list span { padding: 9px 12px; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; color: #c9d7da; font-size: 11px; text-align: center; }
+.privacy-policy-link { display: inline-block; margin-top: 14px; color: var(--lime-light); font-weight: 800; }
+
+.policy-page { min-height: 100vh; background: var(--paper); color: var(--ink); }
+.policy-shell { width: min(100% - 36px, 880px); margin: 0 auto; padding: 72px 0 110px; }
+.policy-back { display: inline-flex; margin-bottom: 34px; color: var(--text-soft); font-weight: 800; text-decoration: none; }
+.policy-shell h1 { margin: 0 0 12px; font-size: clamp(42px, 7vw, 72px); letter-spacing: -.06em; }
+.policy-updated { margin: 0 0 42px; color: var(--text-soft); }
+.policy-language { margin-top: 22px; padding: 30px; border: 1px solid var(--line); border-radius: 24px; background: var(--surface); box-shadow: var(--shadow); }
+.policy-language h2 { margin-top: 0; font-size: 28px; }
+.policy-language h3 { margin: 26px 0 8px; font-size: 17px; }
+.policy-language p,.policy-language li { color: var(--text-soft); line-height: 1.7; }
+.policy-language a { color: var(--ink); font-weight: 800; }
 
 .final-cta { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 28px; padding-block: 130px; }
 .final-cta img { width: 96px; border-radius: 25px; animation: float 4s ease-in-out infinite; }.final-cta h2 { max-width: 720px; margin: 10px 0 0; font-size: clamp(38px,5vw,67px); line-height: .98; letter-spacing: -.055em; }
