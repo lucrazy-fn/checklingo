@@ -97,8 +97,8 @@ button:focus-visible, a:focus-visible, select:focus-visible { outline: 3px solid
 .window-bar > span { width: 8px; height: 8px; border-radius: 50%; background: #597078; }
 .window-bar > span:first-child { background: var(--orange); }
 .window-bar small { margin-left: auto; color: #799098; font-size: 10px; }
-.demo-board { display: grid; grid-template-columns: repeat(8, 1fr); aspect-ratio: 1; padding: 14px; }
-.square { display: grid; place-items: center; position: relative; aspect-ratio: 1; background: #142b32; color: #ecf7f4; font-size: clamp(24px, 3vw, 42px); }
+.demo-board { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); grid-template-rows: repeat(8, minmax(0, 1fr)); aspect-ratio: 1; padding: 14px; }
+.square { display: grid; place-items: center; position: relative; min-width: 0; min-height: 0; background: #142b32; color: #ecf7f4; font-size: clamp(24px, 3vw, 42px); }
 .square:nth-child(16n + 1),.square:nth-child(16n + 3),.square:nth-child(16n + 5),.square:nth-child(16n + 7),.square:nth-child(16n + 10),.square:nth-child(16n + 12),.square:nth-child(16n + 14),.square:nth-child(16n + 16) { background: #294049; }
 .square.highlight { background: rgba(255, 227, 106, .42); box-shadow: inset 0 0 0 3px #ffe36a; }
 .square.opponent-highlight { background: rgba(255, 148, 77, .35); box-shadow: inset 0 0 0 3px var(--orange); }
