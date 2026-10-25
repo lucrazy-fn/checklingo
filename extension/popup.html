@@ -9,21 +9,23 @@
 <body>
   <main>
     <h1>CheckLingo <small id="version"></small></h1>
-    <label class="orientation-option language-option"><span data-i18n="interfaceLanguage">Idioma da interface</span>
-      <select id="language">
-        <option value="auto" data-i18n="languageAuto">Automático</option>
-        <option value="pt_BR">Português</option>
-        <option value="en">English</option>
-        <option value="es">Español</option>
-      </select>
-    </label>
-    <label class="orientation-option"><span data-i18n="appearance">Aparência</span>
-      <select id="theme">
-        <option value="system" data-i18n="themeSystem">Sistema</option>
-        <option value="light" data-i18n="themeLight">Claro</option>
-        <option value="dark" data-i18n="themeDark">Escuro</option>
-      </select>
-    </label>
+    <section class="popup-toolbar" aria-label="Preferências da interface">
+      <label class="compact-select language-option"><span data-i18n="interfaceLanguage">Idioma da interface</span>
+        <select id="language">
+          <option value="auto" data-i18n="languageAuto">Automático</option>
+          <option value="pt_BR">Português</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </label>
+      <label class="compact-select appearance-option"><span data-i18n="appearance">Aparência</span>
+        <select id="theme">
+          <option value="system" data-i18n="themeSystem">Sistema</option>
+          <option value="light" data-i18n="themeLight">Claro</option>
+          <option value="dark" data-i18n="themeDark">Escuro</option>
+        </select>
+      </label>
+    </section>
     <label class="option">
       <span><strong data-i18n="replaceWord">Trocar palavra</strong><small data-i18n="replaceWordHelp">Nos textos de lições e partidas. A fala não muda.</small></span>
       <input id="replaceEnabled" type="checkbox">
@@ -90,4 +92,3 @@
   <script src="popup.js"></script>
 </body>
 </html>
-
